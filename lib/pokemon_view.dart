@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mini_pokedex/bloc/single_pokemon_event.dart';
 import 'package:mini_pokedex/bloc/single_pokemon_state.dart';
+import 'package:mini_pokedex/widgets/appbar.dart';
+import 'package:mini_pokedex/widgets/bottom_nav_bar.dart';
 
 import 'bloc/single_pokemon_bloc.dart';
 
@@ -17,9 +18,8 @@ class _PokemonViewState extends State<PokemonView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('test'),
-        ),
+        backgroundColor: Colors.yellow[50],
+        appBar: buildAppBar(),
         body: BlocBuilder<SinglePokemonBloc, SinglePokemonState>(
             builder: (context, state) {
           if (state is SinglePokemonLoadState) {
@@ -38,7 +38,11 @@ class _PokemonViewState extends State<PokemonView> {
                           state.imageURL,
                           scale: 0.8,
                         ),
-                        Text(state.name)
+                        Text(
+                          state.name,
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w500),
+                        )
                       ],
                     ),
                   )),
@@ -55,6 +59,7 @@ class _PokemonViewState extends State<PokemonView> {
             return Container();
           }
         }),
+        bottomNavigationBar: BottomNavBar(),
       ),
     );
   }

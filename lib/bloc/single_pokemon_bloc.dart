@@ -2,9 +2,9 @@ import 'dart:math';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mini_pokedex/bloc/single_pokemon_event.dart';
 import 'package:mini_pokedex/bloc/single_pokemon_state.dart';
-import 'package:mini_pokedex/pokemon_repo.dart';
+import 'package:mini_pokedex/data/pokemon_repo.dart';
 import 'package:mini_pokedex/bloc/pokemon_state.dart';
-import 'package:mini_pokedex/pokemon_response.dart';
+import 'package:mini_pokedex/data/pokemon_response.dart';
 
 
 class SinglePokemonBloc extends Bloc<SinglePokemonEvent, SinglePokemonState> {

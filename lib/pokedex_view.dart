@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mini_pokedex/bloc/pokemon_state.dart';
+import 'package:mini_pokedex/widgets/appbar.dart';
+import 'package:mini_pokedex/widgets/bottom_nav_bar.dart';
 
 import 'bloc/pokemon_bloc.dart';
 
@@ -12,32 +14,7 @@ class PokedexView extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       backgroundColor: Colors.yellow[50],
-      appBar: AppBar(title: Text('Mini Pokédex',style: TextStyle(
-        inherit: true,
-        fontSize: 32,
-        color: Colors.yellow[600],
-          fontFamily: 'Nunito' ,
-          shadows: [
-        Shadow( // bottomLeft
-            offset: const Offset(-2, -2),
-            color: Colors.blue[900]!
-        ),
-        Shadow( // bottomRight
-            offset: const Offset(2, -2),
-            color: Colors.blue[700]!
-        ),
-        Shadow( // topRight
-            offset: const Offset(2, 2),
-            color: Colors.blue[700]!
-        ),
-        Shadow( // topLeft
-            offset: const Offset(-2, 2),
-            color: Colors.blue[700]!
-        ),
-      ]
-      ) ,),
-        backgroundColor: Colors.red[900],
-      ),
+      appBar: buildAppBar(),
       body: BlocBuilder<PokemonBloc, PokemonState>(
         builder: (context, state) {
           if (state is PokemonLoadState ){
@@ -68,9 +45,11 @@ class PokedexView extends StatelessWidget {
 
         },
       ),
-      bottomNavigationBar: BottomNavigationBar(items: const [BottomNavigationBarItem(icon: Icon(Icons.search, color: Colors.white) , label: 'Find', ), BottomNavigationBarItem(icon: Icon(Icons.home,  color: Colors.white) , label: 'Home') ], backgroundColor: Colors.black,),
+      bottomNavigationBar: BottomNavBar(),
 
     );
 
   }
+
+
 }

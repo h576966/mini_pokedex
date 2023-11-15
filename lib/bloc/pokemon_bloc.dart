@@ -1,6 +1,6 @@
  import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mini_pokedex/bloc/pokemon_event.dart';
-import 'package:mini_pokedex/pokemon_repo.dart';
+import 'package:mini_pokedex/data/pokemon_repo.dart';
 import 'package:mini_pokedex/bloc/pokemon_state.dart';
 
 

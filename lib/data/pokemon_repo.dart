@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:mini_pokedex/pokemon_evolution_respons.dart';
-import 'package:mini_pokedex/pokemon_page_response.dart';
-import 'package:mini_pokedex/pokemon_response.dart';
+import 'package:mini_pokedex/data/pokemon_evolution_respons.dart';
+import 'package:mini_pokedex/data/pokemon_page_response.dart';
+import 'package:mini_pokedex/data/pokemon_response.dart';
 
 class PokemonRepo {
   final baseURL = 'pokeapi.co';
@@ -22,7 +22,7 @@ class PokemonRepo {
   }
 
   Future<PokemonResponse> getPokemon(int pokemonId) async {
-    final uri = Uri.https(baseURL, '/api/v2/pokemon/$pokemonId');
+    final uri = Uri.https(baseURL, '/api/v2/pokemon/$pokemonId/');
 
     final response = await client.get(uri);
     final json = jsonDecode(response.body);
