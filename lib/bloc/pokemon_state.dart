@@ -1,11 +1,6 @@
-
-
 import 'package:mini_pokedex/pokemon_page_response.dart';
 
-abstract class PokemonState{
-
-
-}
+abstract class PokemonState{}
 
 class PokemonInitialState extends PokemonState {}
 
@@ -22,7 +17,7 @@ class PokemonSuccessState extends PokemonState{
 }
 
 class PokemonFailedState extends PokemonState{
-   Error error;
+   String error;
 
    PokemonFailedState({required this.error});
 

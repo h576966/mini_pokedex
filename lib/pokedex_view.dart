@@ -11,7 +11,32 @@ class PokedexView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: AppBar(title: const Text('Mini Pokedex'), backgroundColor: Colors.redAccent,
+      backgroundColor: Colors.yellow[50],
+      appBar: AppBar(title: Text('Mini Pokédex',style: TextStyle(
+        inherit: true,
+        fontSize: 32,
+        color: Colors.yellow[600],
+          fontFamily: 'Nunito' ,
+          shadows: [
+        Shadow( // bottomLeft
+            offset: const Offset(-2, -2),
+            color: Colors.blue[900]!
+        ),
+        Shadow( // bottomRight
+            offset: const Offset(2, -2),
+            color: Colors.blue[700]!
+        ),
+        Shadow( // topRight
+            offset: const Offset(2, 2),
+            color: Colors.blue[700]!
+        ),
+        Shadow( // topLeft
+            offset: const Offset(-2, 2),
+            color: Colors.blue[700]!
+        ),
+      ]
+      ) ,),
+        backgroundColor: Colors.red[900],
       ),
       body: BlocBuilder<PokemonBloc, PokemonState>(
         builder: (context, state) {
@@ -22,7 +47,7 @@ class PokedexView extends StatelessWidget {
 
           } else if (state is PokemonSuccessState) {
             return GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, mainAxisSpacing: 4, crossAxisSpacing: 4),
               itemCount: state.pokemons.length,
               itemBuilder: (context, index) {
                 return Card(
@@ -43,6 +68,7 @@ class PokedexView extends StatelessWidget {
 
         },
       ),
+      bottomNavigationBar: BottomNavigationBar(items: const [BottomNavigationBarItem(icon: Icon(Icons.search, color: Colors.white) , label: 'Find', ), BottomNavigationBarItem(icon: Icon(Icons.home,  color: Colors.white) , label: 'Home') ], backgroundColor: Colors.black,),
 
     );
 
